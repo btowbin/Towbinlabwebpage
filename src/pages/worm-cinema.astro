@@ -13,6 +13,6 @@ const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 <BaseLayout title="Worm Cinema">
   <section class="page-intro shell narrow"><h1>Worm cinema</h1></section>
-  <section class="shell cinema-list">{films.map(([title,description,file], index) => <article><h2>{title}</h2><p>{description}</p>{index === 0 && <video controls loop muted playsinline preload="metadata"><source src={`${base}images/worm-cinema/micro-chambers.mp4`} type="video/mp4" /></video>}<img src={`${base}images/worm-cinema/${file}`} alt="" /></article>)}</section>
+  <section class="shell cinema-list">{films.map(([title,description,file], index) => <article><h2>{title}</h2>{index === 0 && <video controls loop muted playsinline preload="metadata"><source src={`${base}images/worm-cinema/micro-chambers.mp4`} type="video/mp4" /></video>}<img src={`${base}images/worm-cinema/${file}`} alt="" /><p>{description}</p></article>)}</section>
   <section class="shell cinema-list"><article><h2>singaling dynamics</h2><p>An animal expressing the transcription factor DAF-16:GFP is shown. DAF-16 shuttles in and out of th nucleus when activated.</p></article></section>
 </BaseLayout>
