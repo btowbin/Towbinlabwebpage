@@ -56,6 +56,6 @@ const galleryId = `gallery-${Math.random().toString(36).slice(2, 9)}`;
   .gallery-thumbnails { display: flex; gap: .55rem; overflow-x: auto; padding: 1rem 0 .2rem; }
   .gallery-thumbnails button { flex: 0 0 76px; height: 58px; padding: 0; opacity: .58; }
   .gallery-thumbnails button.is-active, .gallery-thumbnails button:hover { opacity: 1; border-color: var(--ink); }
-  .gallery-thumbnails img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .gallery-thumbnails img { display: block; width: 100%; height: 100%; object-fit: contain; background: #090909; }
   @media (max-width: 760px) { .gallery-stage { height: min(74vw, 29rem); } .gallery-thumbnails button { flex-basis: 62px; height: 48px; } }
 </style>
