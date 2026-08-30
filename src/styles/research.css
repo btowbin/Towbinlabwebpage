@@ -1,11 +1,17 @@
 .research-overview {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-areas: "image text";
   align-items: start;
   gap: 55px;
 }
 
+.research-overview-copy {
+  grid-area: text;
+}
+
 .research-intro-image {
+  grid-area: image;
   display: block;
   width: 100%;
   margin-top: 0;
@@ -15,6 +21,9 @@
 @media (max-width: 760px) {
   .research-overview {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "text"
+      "image";
     gap: 25px;
   }
 
