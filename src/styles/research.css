@@ -1,7 +1,24 @@
+.research-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  align-items: start;
+  gap: 55px;
+}
+
 .research-intro-image {
   display: block;
   width: 100%;
-  max-height: 360px;
-  margin-top: 2rem;
-  object-fit: cover;
+  margin-top: 0;
+  object-fit: contain;
+}
+
+@media (max-width: 760px) {
+  .research-overview {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .research-intro-image {
+    max-width: 300px;
+  }
 }
