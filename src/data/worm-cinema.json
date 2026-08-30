@@ -1,0 +1,32 @@
+[
+  {
+    "movie": "micro-chambers.mp4",
+    "title": "Individuals of C. elegans growing in micro chambers",
+    "legend": "Individual animals of C. elegans were recorded simultaneously in arrayed micro chambers from birth to adulthood at a time resolution of 10 minutes."
+  },
+  {
+    "movie": "micro-chambers.gif",
+    "title": "Worm race",
+    "legend": "Individuals of C. elegans were imaged every 10 minutes throughout their development and computationally straightened. green marks the pharynx, red the total body."
+  },
+  {
+    "movie": "worm-race.gif",
+    "title": "Germline growth",
+    "legend": "The two gonadal arms of the germline of C. elegans was marked GFP and imaged from birth to adulthood."
+  },
+  {
+    "movie": "germline-growth.gif",
+    "title": "chewing worm",
+    "legend": "The pharynx of a worm was imaged at 30 frames per second to visualize the movements of the pharyngeal muscle. Movie plays in real time."
+  },
+  {
+    "movie": "chewing-worm.gif",
+    "title": "reproducing worms",
+    "legend": "Single animal was imaged hourly over 7 days. Eggs were genetically prevented from hatching to count progeny."
+  },
+  {
+    "movie": "reproducing-worms.gif",
+    "title": "singaling dynamics",
+    "legend": "An animal expressing the transcription factor DAF-16:GFP is shown. DAF-16 shuttles in and out of th nucleus when activated."
+  }
+]
