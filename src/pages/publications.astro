@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import PublicationList from '../components/PublicationList.astro'; import publications from '../data/publications.json';
+---
+<BaseLayout title="Publications"><section class="page-intro shell narrow"><p class="kicker">Towbin Lab</p><h1>Selected publications</h1><p class="lead">For the complete list, visit <a href="https://scholar.google.ch/citations?user=sQGwyD4AAAAJ" target="_blank" rel="noreferrer">Google Scholar</a>.</p></section><section class="shell narrow section"><PublicationList publications={publications} /></section></BaseLayout>

@@ -1,0 +1,23 @@
+---
+const links = [['/','Home'],['/research','Research'],['/people','People'],['/publications','Publications'],['/outreach','Outreach'],['/worm-cinema','Worm Cinema'],['/contact','Contact']];
+const path = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="wordmark" href={base} aria-label="Towbin Lab home"><span>Towbin Lab</span><small>Organismal Systems Biology</small></a>
+    <button class="menu-button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" aria-label="Primary navigation">
+      {links.map(([href, label]) => <a href={href === '/' ? base : `${base}${href.slice(1)}`} aria-current={path === href ? 'page' : undefined}>{label}</a>)}
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector('.menu-button');
+  const nav = document.querySelector('#site-nav');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    nav?.classList.toggle('open', !open);
+  });
+</script>

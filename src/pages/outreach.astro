@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import MediaGallery from '../components/MediaGallery.astro';
+const camps = Array.from({length: 9}, (_, index) => ({image: `/images/outreach/pestalozzi-${index + 1}.jpg`, alt: '', caption: ''}));
+const slam = [1, 2].map(index => ({image: `/images/outreach/science-slam-${index}.jpg`, alt: '', caption: ''}));
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Outreach">
+  <section class="page-intro shell narrow"><h1>Outreach</h1><p>Communicating our science beyond the core scientific community is important to us. Below are impressions of some of our recent outrech activities.</p></section>
+  <section class="shell section"><h2>Pestalozzi school camps</h2><p>Benjamin regulaory contributes to <a href="https://www.pestalozzischulcamps.ch/" target="_blank" rel="noreferrer">Pestalozzi school camps</a>, an initiative that brings 5th graders to school camps combining science and arts [Photos: Ketty Bertossi]</p><MediaGallery items={camps.map(item => ({...item, image: `${base}${item.image.slice(1)}`}))} /></section>
+  <section class="shell section"><h2>Science Slam</h2><p>Peter presents his work on germline growth at the Bern Science Slam</p><MediaGallery items={slam.map(item => ({...item, image: `${base}${item.image.slice(1)}`}))} /></section>
+</BaseLayout>

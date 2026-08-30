@@ -1,0 +1,61 @@
+---
+const { items } = Astro.props;
+const galleryId = `gallery-${Math.random().toString(36).slice(2, 9)}`;
+---
+<div class="gallery" data-gallery>
+  <div class="gallery-stage" id={galleryId} aria-live="polite">
+    {items.map((item, index) => <figure data-slide class:list={{ 'is-active': index === 0 }} aria-hidden={index === 0 ? 'false' : 'true'}><img src={item.image} alt={item.alt} loading="eager" /><figcaption>{item.caption || `Image ${index + 1} of ${items.length}`}</figcaption></figure>)}
+  </div>
+  <div class="gallery-controls">
+    <button type="button" data-previous aria-controls={galleryId}>Previous</button>
+    <span data-count>1 / {items.length}</span>
+    <button type="button" data-next aria-controls={galleryId}>Next</button>
+  </div>
+  <div class="gallery-thumbnails" aria-label="Gallery images">
+    {items.map((item, index) => <button type="button" data-thumbnail data-index={index} class:list={{ 'is-active': index === 0 }} aria-label={`Show image ${index + 1} of ${items.length}`} aria-current={index === 0 ? 'true' : undefined}><img src={item.image} alt="" loading="eager" /></button>)}
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+    const slides = [...gallery.querySelectorAll('[data-slide]')];
+    const thumbnails = [...gallery.querySelectorAll('[data-thumbnail]')];
+    const count = gallery.querySelector('[data-count]');
+    let current = 0;
+    const show = (index) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+      });
+      thumbnails.forEach((thumbnail, thumbnailIndex) => {
+        const active = thumbnailIndex === current;
+        thumbnail.classList.toggle('is-active', active);
+        thumbnail.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+      if (count) count.textContent = `${current + 1} / ${slides.length}`;
+    };
+    gallery.querySelector('[data-previous]')?.addEventListener('click', () => show(current - 1));
+    gallery.querySelector('[data-next]')?.addEventListener('click', () => show(current + 1));
+    thumbnails.forEach((thumbnail, index) => thumbnail.addEventListener('click', () => show(index)));
+  });
+</script>
+
+<style>
+  .gallery { margin-top: 1.6rem; }
+  .gallery-stage { position: relative; display: grid; place-items: center; height: min(58vw, 40rem); min-height: 18rem; background: #090909; overflow: hidden; }
+  figure { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; opacity: 0; pointer-events: none; transition: opacity .14s ease; }
+  figure.is-active { opacity: 1; pointer-events: auto; }
+  figure img { display: block; width: 100%; height: 100%; object-fit: contain; }
+  figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .gallery-controls { display: flex; align-items: center; justify-content: center; gap: 1.2rem; padding-top: .9rem; color: var(--muted); }
+  .gallery-controls button, .gallery-thumbnails button { border: 1px solid var(--line); background: transparent; color: var(--ink); font: inherit; cursor: pointer; }
+  .gallery-controls button { padding: .45rem .75rem; }
+  .gallery-controls button:hover { background: var(--ink); color: var(--bg); }
+  .gallery-thumbnails { display: flex; gap: .55rem; overflow-x: auto; padding: 1rem 0 .2rem; }
+  .gallery-thumbnails button { flex: 0 0 76px; height: 58px; padding: 0; opacity: .58; }
+  .gallery-thumbnails button.is-active, .gallery-thumbnails button:hover { opacity: 1; border-color: var(--ink); }
+  .gallery-thumbnails img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 760px) { .gallery-stage { height: min(74vw, 29rem); } .gallery-thumbnails button { flex-basis: 62px; height: 48px; } }
+</style>

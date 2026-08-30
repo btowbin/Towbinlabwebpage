@@ -1,0 +1,7 @@
+---
+const { publications, limit } = Astro.props;
+const sorted = [...publications].sort((a,b) => b.year - a.year || a.order - b.order);
+const visible = limit ? sorted.slice(0, limit) : sorted;
+const years = [...new Set(visible.map(p => p.year))];
+---
+<div class="publication-list">{years.map(year => <section><h2>{year}</h2>{visible.filter(p => p.year === year).map(pub => <article class="publication"><p class="eyebrow">{pub.journal}</p><h3>{pub.doi ? <a href={pub.doi} target="_blank" rel="noreferrer">{pub.title}</a> : pub.title}</h3><p>{pub.authors}</p>{pub.links?.length && <p class="inline-links">{pub.links.map(link => <a href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}</p>}</article>)}</section>)}</div>

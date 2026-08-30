@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const films = [
+  ['Individuals of C. elegans growing in micro chambers','Individual animals of C. elegans were recorded simultaneously in arrayed micro chambers from birth to adulthood at a time resolution of 10 minutes.','micro-chambers.gif'],
+  ['Worm race','Individuals of C. elegans were imaged every 10 minutes throughout their development and computationally straightened. green marks the pharynx, red the total body.','worm-race.gif'],
+  ['Germline growth','The two gonadal arms of the germline of C. elegans was marked GFP and imaged from birth to adulthood.','germline-growth.gif'],
+  ['chewing worm','The pharynx of a worm was imaged at 30 frames per second to visualize the movements of the pharyngeal muscle. Movie plays in real time.','chewing-worm.gif'],
+  ['reproducing worms','Single animal was imaged hourly over 7 days. Eggs were genetically prevented from hatching to count progeny.','reproducing-worms.gif']
+];
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Worm Cinema">
+  <section class="page-intro shell narrow"><h1>Worm cinema</h1></section>
+  <section class="shell cinema-list">{films.map(([title,description,file]) => <article><h2>{title}</h2><p>{description}</p><img src={`${base}images/worm-cinema/${file}`} alt="" /></article>)}</section>
+  <section class="shell cinema-list"><article><h2>singaling dynamics</h2><p>An animal expressing the transcription factor DAF-16:GFP is shown. DAF-16 shuttles in and out of th nucleus when activated.</p></article></section>
+</BaseLayout>

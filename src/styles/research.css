@@ -1,0 +1,7 @@
+.research-intro-image {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  margin-top: 2rem;
+  object-fit: cover;
+}

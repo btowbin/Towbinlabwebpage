@@ -1,0 +1,4 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'; import site from '../data/site.json';
+---
+<BaseLayout title="Contact"><section class="page-intro shell narrow contact"><p class="kicker">Contact</p><h1>Contact information</h1><p>{site.institution}<br />{site.institute}</p><p>{site.address.map(line => <>{line}<br /></>)}</p><p><a href={`mailto:${site.email}`}>{site.email}</a></p></section></BaseLayout>

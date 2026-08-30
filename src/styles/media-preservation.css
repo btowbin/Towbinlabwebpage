@@ -1,0 +1,9 @@
+/* Keep the downloaded source media at its original proportions. */
+.research-intro-image,
+.team-image,
+.split img,
+.media-grid img {
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
