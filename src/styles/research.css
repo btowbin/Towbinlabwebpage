@@ -1,9 +1,17 @@
 .research-overview {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
-  grid-template-areas: "image text";
+  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-areas:
+    "title title"
+    "text image";
   align-items: start;
-  gap: 55px;
+  column-gap: 55px;
+  row-gap: 20px;
+}
+
+.research-overview > h1 {
+  grid-area: title;
+  margin-bottom: 0;
 }
 
 .research-overview-copy {
@@ -22,6 +30,7 @@
   .research-overview {
     grid-template-columns: 1fr;
     grid-template-areas:
+      "title"
       "text"
       "image";
     gap: 25px;
