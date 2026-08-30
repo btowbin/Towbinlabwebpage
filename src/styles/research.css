@@ -1,9 +1,9 @@
 .research-overview {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 300px;
+  grid-template-columns: 300px minmax(0, 1fr);
   grid-template-areas:
     "title title"
-    "text image";
+    "image text";
   align-items: start;
   column-gap: 55px;
   row-gap: 20px;
@@ -31,8 +31,8 @@
     grid-template-columns: 1fr;
     grid-template-areas:
       "title"
-      "text"
-      "image";
+      "image"
+      "text";
     gap: 25px;
   }
 

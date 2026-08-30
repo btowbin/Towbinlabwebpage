@@ -7,7 +7,7 @@ const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 <BaseLayout title="Outreach">
-  <section class="page-intro shell narrow"><h1>Outreach</h1><p>Communicating our science beyond the core scientific community is important to us. Below are impressions of some of our recent outrech activities.</p></section>
+  <section class="page-intro shell"><h1>Outreach</h1><p>Communicating our science beyond the core scientific community is important to us. Below are impressions of some of our recent outrech activities.</p></section>
   <section class="shell section"><h2>Pestalozzi school camps</h2><p>Benjamin regulaory contributes to <a href="https://www.pestalozzischulcamps.ch/" target="_blank" rel="noreferrer">Pestalozzi school camps</a>, an initiative that brings 5th graders to school camps combining science and arts [Photos: Ketty Bertossi]</p><MediaGallery items={camps.map(item => ({...item, image: `${base}${item.image.slice(1).replace('images/outreach/', 'images/outreach/optimized/').replace('.jpg', '.webp')}`}))} /></section>
   <section class="shell section"><h2>Science Slam</h2><p>Peter presents his work on germline growth at the Bern Science Slam</p><MediaGallery items={slam.map(item => ({...item, image: `${base}${item.image.slice(1).replace('images/outreach/', 'images/outreach/optimized/').replace('.jpg', '.webp')}`}))} /></section>
 </BaseLayout>
