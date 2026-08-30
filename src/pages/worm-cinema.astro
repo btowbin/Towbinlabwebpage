@@ -7,7 +7,8 @@ const films = [
   ['chewing worm','The pharynx of a worm was imaged at 30 frames per second to visualize the movements of the pharyngeal muscle. Movie plays in real time.','chewing-worm.gif'],
   ['reproducing worms','Single animal was imaged hourly over 7 days. Eggs were genetically prevented from hatching to count progeny.','reproducing-worms.gif']
 ];
-const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 <BaseLayout title="Worm Cinema">
   <section class="page-intro shell narrow"><h1>Worm cinema</h1></section>

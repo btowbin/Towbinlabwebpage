@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import MediaGallery from '../components/MediaGallery.astro';
 const camps = Array.from({length: 9}, (_, index) => ({image: `/images/outreach/pestalozzi-${index + 1}.jpg`, alt: '', caption: ''}));
 const slam = [1, 2].map(index => ({image: `/images/outreach/science-slam-${index}.jpg`, alt: '', caption: ''}));
-const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 <BaseLayout title="Outreach">
   <section class="page-intro shell narrow"><h1>Outreach</h1><p>Communicating our science beyond the core scientific community is important to us. Below are impressions of some of our recent outrech activities.</p></section>

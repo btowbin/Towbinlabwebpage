@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 <BaseLayout title="Research">
   <section class="page-intro shell narrow"><h1>Research</h1><p>Our laboratory explores the fundamental design principles governing molecular circuits at the multicellular level. We aim to learn how organisms maintain robustness within an environment yet remain plastic across different environments.</p><p>Our current research focuses on :</p><p>1. how the robustness of development emerges from the communication between cells, and</p><p>2. how phenotypic plasticity optimzes performance under starvation.</p><p>We employ a combination of quantitative experiments and computational approaches, using the nematode <em>C. elegans</em> as our model organism. Our technical strengths lie in in quantitative live imaging and computational image analysis, high-throughput screens, and in the precise spatio-temporal perturbation of molecular circuits.</p><img class="research-intro-image" src={`${base}images/research/micro-chambers.png`} alt="" /></section>
