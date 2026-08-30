@@ -3,4 +3,4 @@ import BaseLayout from '../layouts/BaseLayout.astro'; import PeopleGrid from '..
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
-<BaseLayout title="People"><section class="page-intro shell"><p class="kicker">Towbin Lab</p><h1>Team</h1><img class="team-image" src={`${base}images/people/team.jpg`} alt="Towbin Lab team" /></section><div class="shell section"><PeopleGrid people={people} /></div></BaseLayout>
+<BaseLayout title="People"><section class="page-intro shell"><p class="kicker">Towbin Lab</p><h1>Team</h1><img class="team-image" src={`${base}images/people/team-2026.jpg`} alt="Towbin Lab team in 2026" /></section><div class="shell section"><PeopleGrid people={people} /></div></BaseLayout>
