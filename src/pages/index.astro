@@ -1,13 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 import '../styles/home.css';
-const links = [['/research','Research'],['/outreach','Outreach'],['/people','People'],['/worm-cinema','Worm Cinema'],['/publications','Publications'],['/contact','Contact']];
+const links = [
+  ['/research', 'Research', 'microscope'],
+  ['/outreach', 'Outreach', 'megaphone'],
+  ['/people', 'People', 'users'],
+  ['/worm-cinema', 'Worm Cinema', 'clapperboard'],
+  ['/publications', 'Publications', 'book-open'],
+  ['/contact', 'Contact', 'mail'],
+] as const;
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
 ---
 <BaseLayout title="Home">
   <section class="home shell">
     <div class="home-top"><h1>Organismal Systems Biology Lab</h1><img src={`${base}images/home-worm.png`} alt="Computationally straightened C. elegans" /></div>
-    <div class="home-links">{links.map(([href, label]) => <a href={`${base}${href.slice(1)}`}>{label}</a>)}</div>
+    <div class="home-links">
+      {links.map(([href, label, icon]) => (
+        <a href={`${base}${href.slice(1)}`}>
+          <Icon name={icon} class="home-link-icon" />
+          <span>{label}</span>
+        </a>
+      ))}
+    </div>
   </section>
 </BaseLayout>

@@ -1,5 +1,15 @@
 ---
-const links = [['/','Home'],['/research','Research'],['/people','People'],['/publications','Publications'],['/outreach','Outreach'],['/worm-cinema','Worm Cinema'],['/contact','Contact']];
+import Icon from './Icon.astro';
+
+const links = [
+  ['/', 'Home', 'home'],
+  ['/research', 'Research', 'microscope'],
+  ['/people', 'People', 'users'],
+  ['/publications', 'Publications', 'book-open'],
+  ['/outreach', 'Outreach', 'megaphone'],
+  ['/worm-cinema', 'Worm Cinema', 'clapperboard'],
+  ['/contact', 'Contact', 'mail'],
+] as const;
 const path = Astro.url.pathname;
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
@@ -9,7 +19,12 @@ const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
     <div class="identity"><a class="wordmark" href={base} aria-label="Towbin Lab home"><span>Towbin Lab</span><small>Organismal Systems Biology</small></a><p class="institution-links"><a href="https://www.unibe.ch/" target="_blank" rel="noreferrer">University of Bern</a><span>, </span><a href="https://www.izb.unibe.ch/" target="_blank" rel="noreferrer">Institute of Cell Biology</a></p></div>
     <button class="menu-button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav id="site-nav" aria-label="Primary navigation">
-      {links.map(([href, label]) => <a href={href === '/' ? base : `${base}${href.slice(1)}`} aria-current={path === href ? 'page' : undefined}>{label}</a>)}
+      {links.map(([href, label, icon]) => (
+        <a href={href === '/' ? base : `${base}${href.slice(1)}`} aria-current={path === href ? 'page' : undefined}>
+          <Icon name={icon} class="nav-icon" />
+          <span>{label}</span>
+        </a>
+      ))}
     </nav>
   </div>
 </header>
