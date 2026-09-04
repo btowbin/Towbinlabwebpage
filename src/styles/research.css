@@ -26,6 +26,22 @@
   object-fit: contain;
 }
 
+.research-figure {
+  margin: 0;
+}
+
+.research-figure img {
+  display: block;
+  width: 100%;
+}
+
+.research-figure figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
 @media (max-width: 760px) {
   .research-overview {
     grid-template-columns: 1fr;

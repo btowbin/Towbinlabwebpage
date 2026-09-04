@@ -4,13 +4,14 @@ import '../styles/worm-cinema.css';
 import cinemaUnits from '../data/worm-cinema.json';
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+const splitScientificName = (text) => text.split(/(C\. elegans)/g);
 ---
 <BaseLayout title="Worm Cinema">
   <section class="page-intro shell narrow"><h1>Worm cinema</h1></section>
   <section class="shell cinema-list">
     {cinemaUnits.map(({ movie, title, legend }) => (
       <article class="cinema-unit">
-        <h2>{title}</h2>
+        <h2>{splitScientificName(title).map(part => part === 'C. elegans' ? <em>{part}</em> : part)}</h2>
         {movie.endsWith('.mp4') ? (
           <video controls loop muted playsinline preload="metadata">
             <source src={`${base}images/worm-cinema/${movie}`} type="video/mp4" />
@@ -18,7 +19,7 @@ const base = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
         ) : (
           <img src={`${base}images/worm-cinema/${movie}`} alt="" />
         )}
-        <p>{legend}</p>
+        <p>{splitScientificName(legend).map(part => part === 'C. elegans' ? <em>{part}</em> : part)}</p>
       </article>
     ))}
   </section>

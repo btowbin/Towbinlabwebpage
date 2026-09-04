@@ -18,9 +18,9 @@ const groups = [...new Set(people.filter(p => p.active).sort((a,b) => a.order - 
               <h3>{person.name}</h3>
               <p class="eyebrow">{person.role}</p>
               {person.description.map(text => (
-                <p>{text.split(/(\*[^*]+\*)/g).map(part =>
-                  part.startsWith('*') && part.endsWith('*')
-                    ? <em>{part.slice(1, -1)}</em>
+                <p>{text.split(/(\*[^*]+\*|C\. elegans)/g).map(part =>
+                  (part.startsWith('*') && part.endsWith('*')) || part === 'C. elegans'
+                    ? <em>{part === 'C. elegans' ? part : part.slice(1, -1)}</em>
                     : part
                 )}</p>
               ))}
